@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Word Generator</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div>
+      <form action="random_word" method="POST">
+        {% csrf_token %}
+        <h3>Random Word (attempt #{{ attempt }})</h3>
+        <!--number of attempts-->
+        <h1>{{ random }}</h1>
+        <!--random word generator-->
+        <button
+          class="btn btn-success"
+          id="generate"
+          onclick="location.href='random_word'"
+        >
+          <!--button that generates a new string and increases the attempt by 1-->
+          Generate
+        </button>
+      </form>
+      <button
+        class="btn btn-outline-danger"
+        id="reset"
+        onclick="location.href='/random/reset'"
+      >
+        <!--button to reset the attempt and goes back to the beginning-->
+        Reset
+      </button>
+    </div>
+  </body>
+</html>
