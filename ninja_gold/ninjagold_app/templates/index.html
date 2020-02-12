@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ninja Gold</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div>
+      <h1>N I N J A G O L D</h1>
+      <form action="/" method="POST" id="gold">
+        <label for="gold"
+          >Your Gold:
+          <span id="counter">{{ request.session.gold_counter }}</span>
+        </label>
+
+        <!-- <input name="gold_counter" value="0" id="counter" /> -->
+      </form>
+      <div id="menu">
+        <div
+          class="options"
+          style="background-image: url({% static 'img/farm.png' %}"
+        >
+          <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="location" value="farm" class="results" />
+            <h3>Farm</h3>
+            <p>(earns 10-20 gold)</p>
+            <button
+              class="btn btn-warning"
+              name="farm"
+              onclick="location.href='/process_money'"
+            >
+              Find Gold!
+            </button>
+          </form>
+        </div>
+        <div
+          class="options"
+          style="background-image: url({% static 'img/cave.png' %}"
+        >
+          <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="location" value="cave" class="results" />
+            <h3>Cave</h3>
+            <p>(earns 5-10 gold)</p>
+            <button
+              class="btn btn-warning"
+              name="cave"
+              onclick="location.href='/process_money'"
+            >
+              Find Gold!
+            </button>
+          </form>
+        </div>
+        <div
+          class="options"
+          style="background-image: url({% static 'img/house.png' %}"
+        >
+          <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <input
+              type="hidden"
+              name="location"
+              value="house"
+              class="results"
+            />
+            <h3>House</h3>
+            <p>(earns 2-5 gold)</p>
+            <button class="btn btn-warning">
+              Find Gold!
+            </button>
+          </form>
+        </div>
+        <div
+          class="options"
+          style="background-image: url({% static 'img/casino.png' %}"
+        >
+          <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <input
+              type="hidden"
+              name="location"
+              value="casino"
+              class="results"
+            />
+            <h3>Casino</h3>
+            <p>(earns/takes 0-50 gold)</p>
+            <button
+              class="btn btn-warning"
+              name="casino"
+              onclick="location.href='/process_money'"
+            >
+              Find Gold!
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <label for="activities" id="activity">Activities:</label>
+      <div name="activities" id="activities">
+        {% for activity in request.session.activities reversed %}
+        <p class="text-success">
+          {{ activity|safe }}
+        </p>
+        {%endfor%}
+      </div>
+    </div>
+    <div>
+      <form action="/reset" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-outline-danger" id="reset">
+          New Game
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

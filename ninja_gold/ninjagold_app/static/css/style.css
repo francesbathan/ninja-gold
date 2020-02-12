@@ -1,0 +1,73 @@
+* {
+  margin: 0 auto;
+  padding: 0px;
+}
+div {
+  width: 100vh;
+}
+h1 {
+  margin: 40px;
+  text-align: center;
+  color: darkred;
+}
+#gold {
+  margin: 20px 0px;
+}
+#counter {
+  padding: 5px 10px;
+  margin: 0px 10px;
+  color: darkgoldenrod;
+  font-weight: bold;
+  /* border: 1px solid gray; */
+  min-width: 200px;
+}
+#menu {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+.options {
+  /* boxes for the menu */
+  border: 3px solid black;
+  padding: 40px 30px;
+  text-align: center;
+  width: 220px;
+  height: 220px;
+}
+p {
+  font-size: 10pt;
+}
+#activity {
+  margin: 30px auto;
+}
+#activities {
+  /* box for the activities log*/
+  border: 3px solid black;
+  width: 100vh;
+  height: 200px;
+  display: block;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+.results {
+  display: block;
+}
+#reset {
+  /* styling for the reset button */
+  width: 100px;
+  font-size: 8pt;
+  float: right;
+  margin: 50px 0px;
+}
+.text-success {
+  /* class for activities box */
+  font-size: 9pt;
+}
+.red {
+  /* styling for losing in the casino*/
+  font-size: 9pt;
+  color: red;
+}
