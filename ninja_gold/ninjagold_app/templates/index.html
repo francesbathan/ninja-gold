@@ -17,6 +17,7 @@
     <div>
       <h1>N I N J A G O L D</h1>
       <form action="/" method="POST" id="gold">
+        {% csrf_token %}
         <label for="gold"
           >Your Gold:
           <span id="counter">{{ request.session.gold_counter }}</span>
